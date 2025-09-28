@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://dr3q05w1dfnh6"]
+[gd_scene load_steps=9 format=4 uid="uid://dr3q05w1dfnh6"]
 
 [ext_resource type="PackedScene" uid="uid://ch87u3q7drhqh" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dbnkj4i18kp2w" path="res://background_details.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cx8fsvs6p5bm7" path="res://Backgrounds.png" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ds4pdsf5p7lac" path="res://door.tscn" id="4_1bvp3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -80,3 +81,6 @@ tile_set = SubResource("TileSet_1bvp3")
 position = Vector2(-45, -24)
 rotation = 0.154022
 shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(622, 0)
