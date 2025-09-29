@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ol2j403qlvpl"]
 
-[ext_resource type="Script" uid="uid://btdr5gfqge6vw" path="res://confirmation_dialog.gd" id="1_wdnif"]
+[ext_resource type="Script" uid="uid://btdr5gfqge6vw" path="res://scripts/confirmation_dialog.gd" id="1_wdnif"]
 
 [node name="Warning" type="CanvasLayer"]
 scale = Vector2(0.1, 0.1)

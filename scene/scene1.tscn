@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://dr3q05w1dfnh6"]
+[gd_scene load_steps=16 format=4 uid="uid://dr3q05w1dfnh6"]
 
-[ext_resource type="PackedScene" uid="uid://ch87u3q7drhqh" path="res://player.tscn" id="1_twc8k"]
+[ext_resource type="PackedScene" uid="uid://ch87u3q7drhqh" path="res://tscn/player.tscn" id="1_twc8k"]
 [ext_resource type="Texture2D" uid="uid://dbnkj4i18kp2w" path="res://imports/background_details.png" id="2_5earr"]
 [ext_resource type="Texture2D" uid="uid://cx8fsvs6p5bm7" path="res://imports/Backgrounds.png" id="3_awkod"]
-[ext_resource type="PackedScene" uid="uid://ds4pdsf5p7lac" path="res://door.tscn" id="4_ux3lh"]
-[ext_resource type="Script" uid="uid://b7gynvn7f6ka5" path="res://fade.gd" id="5_ohgby"]
-[ext_resource type="Script" uid="uid://crroydxaekjcc" path="res://instructions.gd" id="6_7ktdc"]
+[ext_resource type="PackedScene" uid="uid://ds4pdsf5p7lac" path="res://tscn/door.tscn" id="4_ux3lh"]
+[ext_resource type="Script" uid="uid://b7gynvn7f6ka5" path="res://scripts/fade.gd" id="5_ohgby"]
+[ext_resource type="Script" uid="uid://crroydxaekjcc" path="res://scripts/instructions.gd" id="6_7ktdc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_5earr")
@@ -70,9 +70,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_sprq5"]
-resource_name = "fade_in"
+resource_name = "fade_out"
 length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -88,7 +100,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_b6skf"]
-resource_name = "fade_out"
+resource_name = "fade_in"
 length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -102,12 +114,56 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_748me"]
+resource_name = "text_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_twc8k"]
+resource_name = "text_fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ivjb3"]
 _data = {
 &"RESET": SubResource("Animation_kc8kc"),
-&"fade_in": SubResource("Animation_sprq5"),
-&"fade_out": SubResource("Animation_b6skf")
+&"fade_in": SubResource("Animation_b6skf"),
+&"fade_out": SubResource("Animation_sprq5"),
+&"text_fade_in": SubResource("Animation_748me"),
+&"text_fade_out": SubResource("Animation_twc8k")
 }
 
 [node name="Game" type="Node2D"]
@@ -129,6 +185,7 @@ tile_set = SubResource("TileSet_1bvp3")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("4_ux3lh")]
 position = Vector2(625, -1)
+script = null
 
 [node name="FadeLayer" type="CanvasLayer" parent="."]
 script = ExtResource("5_ohgby")
@@ -138,6 +195,8 @@ modulate = Color(0, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -23.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.13891, 1.23974)
@@ -166,3 +225,17 @@ root_node = NodePath("../ColorRect")
 libraries = {
 &"": SubResource("AnimationLibrary_ivjb3")
 }
+
+[node name="Label" type="Label" parent="Instruction"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.102
+anchor_right = 0.5
+anchor_bottom = 0.102
+offset_left = -75.0
+offset_top = 0.943999
+offset_right = 74.0
+offset_bottom = 13.944
+theme_override_font_sizes/font_size = 16
+text = "hello, this is the instruction"
