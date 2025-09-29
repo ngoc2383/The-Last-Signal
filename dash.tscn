@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsxuj5c5luwso"]
+
+[sub_resource type="GDScript" id="GDScript_6afe4"]
+resource_name = "dash"
+script/source = "extends Node
+
+@onready var dash_timer: Timer = $DashTimer
+
+func start_dash(duration: float) -> void:
+	dash_timer.wait_time = duration
+
+	var parent = get_parent()
+	if parent and parent.has_node(\"AnimatedSprite2D\"):
+		var  animatedSprite = parent.get_node(\"AnimatedSprite2D\")
+		animatedSprite.play(\"dash\")
+
+	dash_timer.start()
+
+func _on_DashTimer_timeout():
+	# Called when dash ends
+	var parent = get_parent()
+	if parent and parent.has_node(\"AnimatedSprite2D\"):
+		var animatedSprite = parent.get_node(\"AnimatedSprite2D\")
+		animatedSprite.play(\"idle\")  # or whatever your default animation is
+
+
+func is_dashing() -> bool:
+	return !dash_timer.is_stopped()
+"
+
+[node name="Node" type="Node"]
+script = SubResource("GDScript_6afe4")
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

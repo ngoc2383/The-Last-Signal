@@ -1,0 +1,156 @@
+[gd_scene load_steps=14 format=4 uid="uid://ckardd0t1sj10"]
+
+[ext_resource type="Script" uid="uid://bxhuqenncytsd" path="res://scene_2.gd" id="1_6urqs"]
+[ext_resource type="Texture2D" uid="uid://sbwpjk23mgp0" path="res://imports/scene2.png" id="2_7osah"]
+[ext_resource type="Texture2D" uid="uid://cx8fsvs6p5bm7" path="res://imports/Backgrounds.png" id="3_2kjw6"]
+[ext_resource type="Texture2D" uid="uid://5yl0uc464ton" path="res://imports/PLayer.png" id="4_l4dop"]
+[ext_resource type="PackedScene" uid="uid://ol2j403qlvpl" path="res://warning.tscn" id="5_0vbtm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dm54"]
+texture = ExtResource("3_2kjw6")
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8dm54"]
+sources/1 = SubResource("TileSetAtlasSource_8dm54")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcpy2"]
+atlas = ExtResource("4_l4dop")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfnsu"]
+atlas = ExtResource("4_l4dop")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64ein"]
+atlas = ExtResource("4_l4dop")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ukta"]
+atlas = ExtResource("4_l4dop")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72l6d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcpy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfnsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64ein")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ukta")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dm54"]
+size = Vector2(7, 25)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_6urqs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("2_7osah")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAD9//r/AQAEAAIAAAD+//r/AQAEAAIAAAD///r/AQAEAAIAAAAAAPr/AQAFAAEAAAABAPr/AQAHAAIAAAACAPr/AQAFAAEAAAACAPv/AQAHAAIAAAABAPv/AQAEAAAAAAABAPz/AQAEAAMAAAAAAPz/AQAFAAMAAAD///z/AQAEAAQAAAD///n/AQAEAAAAAAAAAPn/AQAFAAAAAAAAAPv/AQAFAAIAAAACAPn/AQAFAAAAAAABAPn/AQAEAAAAAAACAPz/AQAFAAMAAAADAPr/AQAEAAIAAAAEAPn/AQAHAAAAAAAEAPr/AQAEAAIAAAD7//z/AQAGAAQAAAD7//v/AQAEAAQAAAD7//r/AQAEAAQAAAD7//n/AQAEAAQAAAAEAPv/AQAGAAQAAAAEAPz/AQAEAAQAAAADAPv/AQAEAAMAAAADAPz/AQAEAAQAAAAFAPn/AQAEAAIAAAAFAPr/AQAEAAMAAAAFAPv/AQAEAAIAAAAFAPz/AQAEAAMAAAAFAP3/AQAEAAQAAAD9//v/AQAEAAMAAAD9//z/AQAEAAQAAAD+//v/AQAEAAMAAAD+//z/AQAEAAQAAAD///v/AQAEAAMAAAD9//n/AQAFAAMAAAD+//n/AQAFAAMAAAD8//v/AQAGAAYAAAD8//r/AQAGAAYAAAD6//r/AQAGAAYAAAD6//v/AQAFAAYAAAD6//z/AQAFAAYAAAD6//n/AQAFAAYAAAD8//z/AQAFAAYAAAD8//n/AQAFAAYAAAADAPn/AQAFAAYAAAA=")
+tile_set = SubResource("TileSet_8dm54")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -30)
+sprite_frames = SubResource("SpriteFrames_72l6d")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.434511
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_8dm54")
+
+[node name="Warning" parent="." instance=ExtResource("5_0vbtm")]
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(-0.5, 0, 0, -0.5, 0, 0)
